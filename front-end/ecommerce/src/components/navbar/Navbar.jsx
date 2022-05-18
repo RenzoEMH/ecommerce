@@ -10,7 +10,8 @@ import parseJwt from "../../utils/ParseJwt";
 
 import "./Navbar.scss";
 
-const NavbarMain = () => {
+const NavbarMain = (props) => {
+  const { cartItems } = props;
   const token = useSelector((state) => state.usuarios.token);
   const sesion = parseJwt(token);
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const NavbarMain = () => {
               <button type="button" className="btn position-relative">
                 <i className="bi bi-cart-fill"></i>
                 <span className="position-absolute top-0 start-100 translate-middle badge bg-primary">
-                  5
+                  {cartItems.length}
                 </span>
               </button>
             </Link>
@@ -48,7 +49,7 @@ const NavbarMain = () => {
               <>
                 <Link to="/profile">
                   <button type="button" className="btn position-relative">
-                    <i class="bi bi-person-fill"></i>
+                    <i className="bi bi-person-fill"></i>
                   </button>
                 </Link>
 
@@ -57,7 +58,7 @@ const NavbarMain = () => {
                   className="btn position-relative"
                   onClick={cerrarSesion}
                 >
-                  <i class="bi bi-box-arrow-right"></i>
+                  <i className="bi bi-box-arrow-right"></i>
                 </button>
               </>
             ) : (

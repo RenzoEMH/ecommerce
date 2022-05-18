@@ -4,13 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Store = () => {
+const Store = (props) => {
+  const { onAdd } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const products = useSelector((state) => state.products.products);
   useEffect(() => {
     dispatch(getAllProductsAsync());
-  }, []);
+  }, [dispatch]);
+  // const { addItemToCart } = useContext(CartContext);
   return (
     <div className="container">
       <hr />
@@ -71,7 +73,10 @@ const Store = () => {
                 >
                   Details
                 </button>
-                <button className="btn btn-danger col-md-4 mb-4">
+                <button
+                  className="btn btn-danger col-md-4 mb-4"
+                  onClick={() => onAdd(product)}
+                >
                   Add to Cart
                 </button>
               </div>

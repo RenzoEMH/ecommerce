@@ -4,14 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { getOneProductsAsync } from "../../redux/slices/productSlice";
 import { useEffect } from "react";
 
-const DetailProduct = () => {
+const DetailProduct = (props) => {
+  const { onAdd } = props;
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products.product);
-  console.log(product);
   useEffect(() => {
     dispatch(getOneProductsAsync(productId));
   }, []);
+
   return (
     <div className="small-container single-product container">
       <br />
@@ -53,8 +54,12 @@ const DetailProduct = () => {
             <></>
           )}
 
-          <input type="number" defaultValue="1" />
-          <button className="btn btn-danger mb-1">Add to cart</button>
+          <button
+            className="btn btn-danger mb-1"
+            onClick={() => onAdd(product?.products)}
+          >
+            Add to cart
+          </button>
           <h3 className="mt-4">Product Details</h3>
           <p>{product?.products.description}</p>
         </div>
