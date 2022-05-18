@@ -1,9 +1,29 @@
 import "./Login.scss";
 import CarouselLogin from "../../components/login/Carousel";
+import { useDispatch, useSelector } from "react-redux";
+import { loginAsync, errorLogin } from "../../redux/slices/usersSlice";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const error = useSelector(errorLogin);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { elements } = e.target;
+    const userLogin = {
+      email: elements[0].value,
+      password: elements[1].value,
+    };
+    dispatch(loginAsync(userLogin));
+  };
+
   return (
     <div className="row w-100 main-body">
+      <hr />
+      <hr />
+      <hr />
       <div className="col-lg-7">
         <CarouselLogin />
       </div>
@@ -16,8 +36,8 @@ const Login = () => {
           />
         </div>
         <div className="px-lg-5 w-100 align-self-center">
-          <h1>Welcome to BGames</h1>
-          <form>
+          <h1>Welcome to Store</h1>
+          <form onSubmit={(e) => handleSubmit(e)}>
             <div className="mb-3">
               <label
                 htmlFor="exampleInputEmail1"
@@ -54,6 +74,9 @@ const Login = () => {
               >
                 Forgot your password?
               </a>
+              {error && (
+                <div className="invalid-feedback d-block">{error.message}</div>
+              )}
             </div>
             <div className="d-flex justify-content-center">
               <button type="submit" className="btn btn-secondary w-50 center">
@@ -64,12 +87,11 @@ const Login = () => {
         </div>
         <div className="text-center mt-auto w-100">
           <p className="d-inline-block mx-2">Need an account? </p>
-          <button
-            href="/register"
-            className="btn btn-secondary text-dark text-decoration-none btn-signup"
-          >
-            Sign up
-          </button>
+          <Link to="/register">
+            <button className="btn btn-secondary text-dark text-decoration-none btn-signup">
+              Sign up
+            </button>
+          </Link>
         </div>
       </div>
     </div>

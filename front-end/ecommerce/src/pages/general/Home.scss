@@ -1,74 +1,156 @@
-.home-container {
-  .main-top {
-    .section1 {
-      position: relative;
-      margin-bottom: 75px;
-      .main-img {
-        width: 100%;
-        max-height: 750px;
-        filter: opacity(0.7) blur(1px) contrast(200%) sepia(10%);
-      }
-      .section1-text {
-        position: absolute;
-        top: 45%;
-        left: 70%;
-        transform: translate(-50%, -50%);
-        max-width: 400px;
-      }
-    }
-    .section2 {
-      padding-top: 75px;
-      background-color: rgb(206, 188, 188);
-      padding-bottom: 100px;
-      .main-img-2 {
-        width: 40%;
-        margin-left: 100px;
-      }
-      .section2-text {
-        margin-top: 50px;
-        margin-left: -300px;
-        max-width: 500px;
-        font-size: 1.1rem;
-      }
-    }
-    .section3 {
-      margin-top: 40px;
-      text-align: center;
-    }
-  }
+#header {
+  background: url("https://res.cloudinary.com/vengui/image/upload/v1646869547/cld-sample.jpg");
+  padding-top: 104px;
+}
+.shopButton {
+  background-color: #fff;
+  padding: 10px 28px;
+  color: rgb(85, 85, 85);
+  border-radius: 25px;
+  border: 1px solid rgb(85, 85, 85);
+}
+.shopButton:hover {
+  background-color: red;
+  color: #fff;
+  border-color: red;
+}
+.carousel-inner h1 {
+  font-size: 60px;
+  font-family: var(--lg-font);
+}
+.carousel-item .btn {
+  border-color: #fff !important;
+}
+.carousel-item .btn:hover {
+  border-color: red !important;
 }
 
-.divider {
-  position: relative;
-  margin-top: 40px;
-  margin-bottom: 50px;
-  height: 1px;
-}
-.div-transparent:before {
-  content: "";
+//popular products
+.title h2::before {
   position: absolute;
-  top: 0;
-  left: 5%;
-  right: 5%;
-  width: 90%;
-  height: 1px;
-  background-image: linear-gradient(
-    to right,
-    transparent,
-    rgb(48, 49, 51),
-    transparent
-  );
-}
-.div-dot:after {
   content: "";
-  position: absolute;
-  z-index: 1;
-  top: -9px;
-  left: calc(50% - 9px);
-  width: 18px;
-  height: 18px;
-  background-color: goldenrod;
-  border: 1px solid rgb(48, 49, 51);
+  width: 4px;
+  height: 50px;
+  background-color: red;
+  left: -20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* collection */
+.active-filter-btn {
+  background-color: var(--pink) !important;
+  color: #fff !important;
+  border-color: var(--pink) !important;
+}
+.filter-button-group .btn:hover {
+  color: #fff !important;
+}
+.collection-img span {
+  top: 20px;
+  right: 20px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  box-shadow: inset 0 0 0 2px white, 0 0 0 4px white;
 }
+
+/* offers */
+#offers {
+  background: url("https://res.cloudinary.com/vengui/image/upload/v1646869547/cld-sample.jpg")
+    center/cover no-repeat;
+}
+#offers .row {
+  min-height: 60vh;
+}
+.offers-content span {
+  font-size: 28px;
+}
+.offers-content h2 {
+  font-size: 60px;
+  font-family: var(--lg-font);
+}
+.offers-content .btn {
+  border-color: transparent !important;
+}
+
+/* about */
+#about {
+  background-color: rgba(179, 179, 179, 0.05);
+}
+
+// .home-container {
+//   .main-top {
+//     .section1 {
+//       position: relative;
+//       margin-bottom: 75px;
+//       .main-img {
+//         width: 100%;
+//         max-height: 750px;
+//         filter: opacity(0.7) blur(1px) contrast(200%) sepia(10%);
+//       }
+//       .section1-text {
+//         position: absolute;
+//         top: 45%;
+//         left: 70%;
+//         transform: translate(-50%, -50%);
+//         max-width: 400px;
+//       }
+//     }
+//     .section2 {
+//       padding-top: 75px;
+//       background-color: rgb(206, 188, 188);
+//       padding-bottom: 100px;
+//       .main-img-2 {
+//         width: 40%;
+//         margin-left: 100px;
+//       }
+//       .section2-text {
+//         margin-top: 50px;
+//         margin-left: -300px;
+//         max-width: 500px;
+//         font-size: 1.1rem;
+//       }
+//     }
+//     .section3 {
+//       margin-top: 40px;
+//       text-align: center;
+//     }
+//   }
+// }
+
+// .divider {
+//   position: relative;
+//   margin-top: 40px;
+//   margin-bottom: 50px;
+//   height: 1px;
+// }
+// .div-transparent:before {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 5%;
+//   right: 5%;
+//   width: 90%;
+//   height: 1px;
+//   background-image: linear-gradient(
+//     to right,
+//     transparent,
+//     rgb(48, 49, 51),
+//     transparent
+//   );
+// }
+// .div-dot:after {
+//   content: "";
+//   position: absolute;
+//   z-index: 1;
+//   top: -9px;
+//   left: calc(50% - 9px);
+//   width: 18px;
+//   height: 18px;
+//   background-color: goldenrod;
+//   border: 1px solid rgb(48, 49, 51);
+//   border-radius: 50%;
+//   box-shadow: inset 0 0 0 2px white, 0 0 0 4px white;
+// }
