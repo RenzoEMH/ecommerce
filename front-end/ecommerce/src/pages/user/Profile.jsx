@@ -1,5 +1,79 @@
+import "./Profile.scss";
+import { useNavigate } from "react-router-dom";
+import { getOneUsersAsync } from "../../redux/slices/usersSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import parseJwt from "../../utils/ParseJwt";
+
 const Profile = () => {
-  return <div>Profile</div>;
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.usuarios.token);
+  const sesion = parseJwt(token);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.usuarios.user);
+  useEffect(() => {
+    dispatch(getOneUsersAsync(sesion.id));
+  }, [dispatch, sesion.id]);
+  return (
+    <div>
+      <hr />
+      <hr />
+      <hr />
+      <hr />
+      <hr />
+      <div className="wrapper">
+        <div className="left">
+          <img src="https://i.imgur.com/cMy8V5j.png" alt="user" width="200" />
+          <h4>Renzo Manrique</h4>
+          <p></p>
+        </div>
+        <div className="right">
+          <div className="info">
+            <div className="row">
+              <h3 className="col-md-10">Information</h3>
+              <i
+                className="bi bi-pencil-fill col-md-2"
+                style={{ fontSize: "2rem" }}
+                type="button"
+                onClick={() => navigate("/profile_edit")}
+              ></i>
+            </div>
+            <hr />
+            <div className="info_data row">
+              <div className="data col-md-6">
+                <h4>Name</h4>
+                <p>{user?.user.name}</p>
+              </div>
+              <div className="data col-md-6">
+                <h4>Lastname</h4>
+                <p>{user?.user.lastname}</p>
+              </div>
+            </div>
+            <div className="info_data row">
+              <div className="data col-md-6">
+                <h4>Email</h4>
+                <p>{user?.user.email}</p>
+              </div>
+              <div className="data col-md-6">
+                <h4>Phone</h4>
+                <p>{user?.user.phone}</p>
+              </div>
+            </div>
+            <div className="info_data row">
+              <div className="data col-md-6">
+                <h4>Document</h4>
+                <p>{user?.user.document}</p>
+              </div>
+              <div className="data col-md-6">
+                <h4>Adrress</h4>
+                <p>{user?.user.address}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Profile;
