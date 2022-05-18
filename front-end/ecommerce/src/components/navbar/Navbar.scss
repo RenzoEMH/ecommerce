@@ -1,0 +1,38 @@
+body {
+  font-family: var(--sm-font);
+}
+
+.burger {
+  font-size: 2rem;
+}
+
+.bg-primary {
+  background-color: rgba(192, 107, 167, 0.411) !important;
+}
+
+.navbar {
+  box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand {
+  img {
+    width: 30px;
+  }
+  span {
+    letter-spacing: 2px;
+    font-family: var(--lg-font);
+  }
+}
+.nav-link:hover {
+  color: red !important;
+}
+
+.nav-item {
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+}
+
+//Media queries
+@media (min-width: 992px) {
+  .nav-item {
+    border-bottom: none;
+  }
+}
