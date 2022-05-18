@@ -11,7 +11,7 @@ const DetailProduct = (props) => {
   const product = useSelector((state) => state.products.product);
   useEffect(() => {
     dispatch(getOneProductsAsync(productId));
-  }, []);
+  }, [dispatch, productId]);
 
   return (
     <div className="small-container single-product container">

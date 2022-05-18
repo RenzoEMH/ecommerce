@@ -8,11 +8,20 @@ const Store = (props) => {
   const { onAdd } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const products = useSelector((state) => state.products.products);
+  let products = useSelector((state) => state.products.products);
   useEffect(() => {
     dispatch(getAllProductsAsync());
   }, [dispatch]);
-  // const { addItemToCart } = useContext(CartContext);
+
+  const filterProduct = (e) => {
+    dispatch(getAllProductsAsync());
+    products = products?.products.filter(
+      (item) => item.type === e.target.value
+    );
+    console.log(products);
+    navigate("/search", { state: products });
+  };
+
   return (
     <div className="container">
       <hr />
@@ -31,19 +40,52 @@ const Store = (props) => {
           <button type="button" className="btn btn-primary mx-1 text-dark">
             All
           </button>
-          <button type="button" className="btn btn-primary mx-1 text-dark">
+          <button
+            type="button"
+            className="btn btn-primary mx-1 text-dark"
+            value="Pants"
+            onClick={(e) => filterProduct(e)}
+          >
             Pants
           </button>
-          <button type="button" className="btn btn-primary mx-1 text-dark">
-            T-Shirts / Shirts
+          <button
+            type="button"
+            className="btn btn-primary mx-1 text-dark"
+            value="Shirt"
+            onClick={(e) => filterProduct(e)}
+          >
+            Shirts
           </button>
-          <button type="button" className="btn btn-primary mx-1 text-dark">
+          <button
+            type="button"
+            className="btn btn-primary mx-1 text-dark"
+            value="T-Shirt"
+            onClick={(e) => filterProduct(e)}
+          >
+            T-Shirts
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary mx-1 text-dark"
+            value="Shoes"
+            onClick={(e) => filterProduct(e)}
+          >
             Shoes
           </button>
-          <button type="button" className="btn btn-primary mx-1 text-dark">
-            Jackets
+          <button
+            type="button"
+            className="btn btn-primary mx-1 text-dark"
+            value="Jacket"
+            onClick={(e) => filterProduct(e)}
+          >
+            Jacket
           </button>
-          <button type="button" className="btn btn-primary mx-1 text-dark">
+          <button
+            type="button"
+            className="btn btn-primary mx-1 text-dark"
+            value="Accesories"
+            onClick={(e) => filterProduct(e)}
+          >
             Accesories
           </button>
         </div>

@@ -1,4 +1,5 @@
 import "./Shopcart.scss";
+import { useState, useEffect } from "react";
 
 const ShopCart = (props) => {
   const { cartItems, onAdd, onRemove, deleteItem } = props;
@@ -6,6 +7,43 @@ const ShopCart = (props) => {
   const taxPrice = itemsPrice * 0.14;
   const shippingPrice = 2;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
+  const [description, setDescription] = useState("");
+
+  useEffect(() => {
+    setDescription(
+      cartItems.reduce(
+        (acc, curr, index) =>
+          `${acc}${index !== 0 ? " || " : ""}${curr.name} - ${curr.type} X ${
+            curr.price
+          }`,
+        ""
+      )
+    );
+  }, [cartItems]);
+
+  let handler = window.ePayco.checkout.configure({
+    key: "29f3d11ce1c378d3dd6ebef689530451",
+    test: true,
+  });
+
+  const openPayment = () => {
+    let data = {
+      name: "Ecommerce",
+      description: description,
+      currency: "usd",
+      amount: totalPrice,
+      tax_base: "0",
+      tax: "0",
+      country: "pe",
+      lang: "es",
+      external: "false",
+      response: "http://localhost:3000/confirmacion-compra",
+      methodsDisable: ["PSE", "SP", "CASH", "DP"],
+    };
+    console.log(handler);
+
+    handler.open(data);
+  };
   return (
     <div className="container-fluid">
       <hr />
@@ -118,7 +156,10 @@ const ShopCart = (props) => {
                     </span>
                   </p>
                 </div>
-                <button className="btn btn-danger text-uppercase">
+                <button
+                  className="btn btn-danger text-uppercase"
+                  onClick={openPayment}
+                >
                   Checkout
                 </button>
               </div>

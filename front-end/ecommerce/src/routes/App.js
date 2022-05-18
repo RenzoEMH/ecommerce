@@ -90,7 +90,7 @@ function App() {
         />
       </Routes>
       <Routes>
-        <Route exact path="/search" element={<SearchProduct />} />
+        <Route exact path="/search" element={<SearchProduct onAdd={onAdd} />} />
       </Routes>
       <Routes>
         <Route exact path="/store" element={<Store onAdd={onAdd} />} />
