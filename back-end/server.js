@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import "dotenv/config";
+import cors from "cors";
 
 import { userRouter, productRouter } from "./api/routes/index.js";
 
@@ -17,6 +18,7 @@ mongoose.connection.on("error", (e) => {
 const app = express();
 
 // Middlewares
+app.use(cors());
 app.use(express.json());
 
 //Routes
