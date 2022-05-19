@@ -14,11 +14,9 @@ const Store = (props) => {
   }, [dispatch]);
 
   const filterProduct = (e) => {
-    dispatch(getAllProductsAsync());
     products = products?.products.filter(
       (item) => item.type === e.target.value
     );
-    console.log(products);
     navigate("/search", { state: products });
   };
 

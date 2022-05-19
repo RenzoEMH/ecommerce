@@ -23,8 +23,14 @@ const Profile = () => {
       <hr />
       <div className="wrapper">
         <div className="left">
-          <img src="https://i.imgur.com/cMy8V5j.png" alt="user" width="200" />
-          <h4>Renzo Manrique</h4>
+          {user?.user.photo === "" ? (
+            <i className="bi bi-person-square" style={{ fontSize: "7rem" }}></i>
+          ) : (
+            <img src={user?.user.photo} alt="user" width="200" />
+          )}
+          <h4>
+            {user?.user.name} {user?.user.lastname}
+          </h4>
           <p></p>
         </div>
         <div className="right">
@@ -65,7 +71,7 @@ const Profile = () => {
                 <p>{user?.user.document}</p>
               </div>
               <div className="data col-md-6">
-                <h4>Adrress</h4>
+                <h4>Address</h4>
                 <p>{user?.user.address}</p>
               </div>
             </div>

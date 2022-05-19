@@ -2,6 +2,7 @@ import { updateUserAsync } from "../../redux/slices/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import parseJwt from "../../utils/ParseJwt";
+import { useState } from "react";
 
 const EditProfile = () => {
   const token = useSelector((state) => state.usuarios.token);
@@ -9,6 +10,7 @@ const EditProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.usuarios.user);
+  const [photo, setPhoto] = useState(user?.user.photo);
   const handleSubmit = (e) => {
     e.preventDefault();
     const { elements } = e.target;
@@ -20,11 +22,81 @@ const EditProfile = () => {
       phone: elements[3].value,
       document: elements[4].value,
       address: elements[5].value,
+      photo: photo,
     };
     dispatch(updateUserAsync(updateUser));
     navigate("/profile");
   };
-
+  const showWidgetCloudinary = () => {
+    window.cloudinary.openUploadWidget(
+      {
+        cloudName: "vengui",
+        uploadPreset: "gtf9hiww",
+        sources: ["local"],
+        showAdvancedOptions: false,
+        cropping: true,
+        multiple: false,
+        defaultSource: "local",
+        styles: {
+          palette: {
+            window: "#21262A",
+            sourceBg: "#21262A",
+            windowBorder: "#FFFFFF",
+            tabIcon: "#FFFFFF",
+            inactiveTabIcon: "#8E9FBF",
+            menuIcons: "#FFFFFF",
+            link: "#9F2D30",
+            action: "#336BFF",
+            inProgress: "#00BFFF",
+            complete: "#33ff00",
+            error: "#EA2727",
+            textDark: "#000000",
+            textLight: "#FFFFFF",
+          },
+          fonts: {
+            default: null,
+            "'Space Mono', monospace": {
+              url: "https://fonts.googleapis.com/css?family=Space+Mono",
+              active: true,
+            },
+          },
+        },
+        language: "es",
+        text: {
+          es: {
+            menu: {
+              files: "Mis archivos",
+            },
+            crop: {
+              title: "Recorte su imagen",
+              crop_btn: "Recortar",
+              skip_btn: "Saltar",
+              reset_btn: "Restablecer",
+              close_btn: "Si",
+              close_prompt:
+                "Si cierra la ventana se cancelaran las subidas de imágenes, ¿Está seguro?",
+              image_error: "Hubo un error al subir la imagen",
+              corner_tooltip:
+                "Arrastre la esquina para cambiar el tamaño del cuadro",
+              handle_tooltip:
+                "Arrastre el filo para cambiar el tamaño del cuadro",
+            },
+            local: {
+              browse: "Buscar",
+              dd_title_single: "Arrastre y suelte su imágen aquí",
+              drop_title_single: "Arrastre y suelte la imágen a subir",
+            },
+          },
+        },
+      },
+      (err, result) => {
+        if (!err && result?.event === "success") {
+          const { secure_url } = result.info;
+          setPhoto(secure_url);
+        }
+      }
+    );
+  };
   return (
     <div>
       <hr />
@@ -34,9 +106,17 @@ const EditProfile = () => {
       <hr />
       <div className="wrapper">
         <div className="left">
-          <img src="https://i.imgur.com/cMy8V5j.png" alt="user" width="200" />
-          <h4>Renzo Manrique</h4>
-          <p></p>
+          {user?.user.photo === "" ? (
+            <i className="bi bi-person-square" style={{ fontSize: "7rem" }}></i>
+          ) : (
+            <img src={photo} alt="user" width="200" />
+          )}
+          <h4>
+            {user?.user.name} {user?.user.lastname}
+          </h4>
+          <button className="btn btn-light" onClick={showWidgetCloudinary}>
+            Change photo
+          </button>
         </div>
         <div className="right">
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -52,7 +132,7 @@ const EditProfile = () => {
                     type="text"
                     placeholder=""
                     className="form-control mb-2"
-                    defaultValue={user.user.name}
+                    defaultValue={user?.user.name}
                   />
                 </div>
                 <div className="data col-md-6">
@@ -61,7 +141,7 @@ const EditProfile = () => {
                     type="text"
                     placeholder=""
                     className="form-control mb-2"
-                    defaultValue={user.user.lastname}
+                    defaultValue={user?.user.lastname}
                   />
                 </div>
               </div>
@@ -72,7 +152,7 @@ const EditProfile = () => {
                     type="text"
                     placeholder=""
                     className="form-control mb-2"
-                    defaultValue={user.user.email}
+                    defaultValue={user?.user.email}
                   />
                 </div>
                 <div className="data col-md-6">
@@ -81,7 +161,7 @@ const EditProfile = () => {
                     type="text"
                     placeholder=""
                     className="form-control mb-2"
-                    defaultValue={user.user.phone}
+                    defaultValue={user?.user.phone}
                   />
                 </div>
               </div>
@@ -92,7 +172,7 @@ const EditProfile = () => {
                     type="text"
                     placeholder=""
                     className="form-control mb-2"
-                    defaultValue={user.user.document}
+                    defaultValue={user?.user.document}
                   />
                 </div>
                 <div className="data col-md-6">
@@ -101,7 +181,7 @@ const EditProfile = () => {
                     type="text"
                     placeholder=""
                     className="form-control mb-2"
-                    defaultValue={user.user.address}
+                    defaultValue={user?.user.address}
                   />
                 </div>
               </div>

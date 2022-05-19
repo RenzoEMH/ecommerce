@@ -37,7 +37,7 @@ const ShopCart = (props) => {
       country: "pe",
       lang: "es",
       external: "false",
-      response: "http://localhost:3000/confirmacion-compra",
+      response: "http://localhost:3000/confirmation",
       methodsDisable: ["PSE", "SP", "CASH", "DP"],
     };
     console.log(handler);
