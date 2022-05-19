@@ -13,6 +13,7 @@ import Store from "../pages/user/Store";
 import EditProfile from "../pages/user/EditProfile";
 import DetailProduct from "../pages/user/DetailProducts";
 import { useState } from "react";
+import PurchaseConfirmation from "../pages/user/PurchaseConfirmation";
 
 function App() {
   const token = useSelector((state) => state.usuarios.token);
@@ -94,6 +95,9 @@ function App() {
       </Routes>
       <Routes>
         <Route exact path="/store" element={<Store onAdd={onAdd} />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/confirmation" element={<PurchaseConfirmation />} />
       </Routes>
     </div>
   );

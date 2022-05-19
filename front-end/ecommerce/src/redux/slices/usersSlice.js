@@ -70,7 +70,7 @@ export const usersSlice = createSlice({
       .addCase(loginAsync.fulfilled, (state, { payload }) => {
         const { token } = payload.data;
         state.errorLogin = payload.data;
-        state.loggued = true;
+        state.loggued = payload.data;
         state.token = token;
         localStorage.setItem("infoUser", JSON.stringify(payload));
       })

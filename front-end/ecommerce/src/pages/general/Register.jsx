@@ -1,5 +1,5 @@
 import CarouselLogin from "../../components/login/Carousel";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -19,7 +19,8 @@ const Register = () => {
       lastname: elements[1].value,
       email: elements[2].value,
       password: elements[4].value,
-      photo: "",
+      photo:
+        "https://res.cloudinary.com/vengui/image/upload/v1652935007/78-785827_user-profile-avatar-login-account-male-user-icon_qysquy.png",
       phone: "",
       type: "usuario",
     };
@@ -27,9 +28,6 @@ const Register = () => {
   };
   return (
     <div className="row w-100 main-body">
-      <hr />
-      <hr />
-      <hr />
       <div className="col-lg-7">
         <CarouselLogin />
       </div>
@@ -85,6 +83,16 @@ const Register = () => {
             <Button variant="secondary" type="submit" className="w-50">
               Sign up
             </Button>
+          </div>
+          <div className="d-flex justify-content-center mt-4">
+            <p className="d-inline-block mx-2 mt-2">
+              Already have an account?{" "}
+            </p>
+            <Link to="/login">
+              <button className="btn btn-danger text-dark text-decoration-none btn-signup">
+                Login
+              </button>
+            </Link>
           </div>
         </Form>
       </div>

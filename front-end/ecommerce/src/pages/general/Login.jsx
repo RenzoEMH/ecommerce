@@ -1,13 +1,22 @@
 import "./Login.scss";
 import CarouselLogin from "../../components/login/Carousel";
 import { useDispatch, useSelector } from "react-redux";
-import { loginAsync, errorLogin } from "../../redux/slices/usersSlice";
+import {
+  loginAsync,
+  errorLogin,
+  selectUserLoggued,
+} from "../../redux/slices/usersSlice";
 import { useNavigate, Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const error = useSelector(errorLogin);
+  const loggued = useSelector(selectUserLoggued);
+  useEffect(() => {
+    if (loggued?.message === "success") navigate("/");
+  }, [loggued]);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -21,9 +30,6 @@ const Login = () => {
 
   return (
     <div className="row w-100 main-body">
-      <hr />
-      <hr />
-      <hr />
       <div className="col-lg-7">
         <CarouselLogin />
       </div>
@@ -85,10 +91,10 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <div className="text-center mt-auto w-100">
+        <div className="text-center mt-4 w-100">
           <p className="d-inline-block mx-2">Need an account? </p>
           <Link to="/register">
-            <button className="btn btn-secondary text-dark text-decoration-none btn-signup">
+            <button className="btn btn-danger text-dark text-decoration-none btn-signup">
               Sign up
             </button>
           </Link>
