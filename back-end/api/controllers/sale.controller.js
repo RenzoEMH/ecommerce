@@ -1,0 +1,44 @@
+import axios from "axios";
+import { User, Sale } from "../models/index.js";
+
+export const createSale = async (request, response) => {
+  const { id, userId } = request.body;
+  const url = `${process.env.EPAYCO_API_SERVER}${id}`;
+
+  try {
+    const axiosResponse = await axios.get(url);
+
+    if (!axiosResponse.data.success) {
+      throw new Error("Codigo de transaccion no valido");
+    }
+
+    const transactionId = axiosResponse.data.data.x_transaction_id;
+    const amount = axiosResponse.data.data.x_amount;
+    const signature = axiosResponse.data.data.x_signature;
+
+    const saleExist = await Sale.findOne({ token: signature });
+    if (saleExist) throw new Error("La venta ya fue registrada");
+
+    const userFound = await User.findById(userId);
+    if (!userFound) throw new Error("No user found");
+
+    const newSale = {
+      token: signature,
+      numberTransaction: transactionId,
+      client: `${userFound.name} ${userFound.lastname}`,
+      cardNumber: axiosResponse.data.data.x_cardnumber,
+      paymentDate: axiosResponse.data.data.x_transaction_date,
+      cardType: axiosResponse.data.data.x_franchise,
+      idUser: userFound._id,
+      totalFare: amount,
+    };
+
+    const sale = new Sale(newSale);
+    const newSavedSale = await sale.save();
+    if (!newSavedSale) throw new Error("MongoDB error");
+
+    response.status(200).json(newSavedSale);
+  } catch (error) {
+    response.status(500).json({ error: error.message });
+  }
+};

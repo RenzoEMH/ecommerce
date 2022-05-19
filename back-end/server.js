@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import "dotenv/config";
 import cors from "cors";
 
-import { userRouter, productRouter } from "./api/routes/index.js";
+import { userRouter, productRouter, saleRouter } from "./api/routes/index.js";
 
 // Connect to db
 const dbConnection = process.env.DB_STRING_CONNECTION;
@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
 
 app.use("/api", userRouter);
 app.use("/api", productRouter);
+app.use("/api", saleRouter);
 
 //Launch server
 const PORT = process.env.PORT;
