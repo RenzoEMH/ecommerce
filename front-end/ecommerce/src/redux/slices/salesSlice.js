@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createSale } from "../../api/sales";
+import { createSale, getAllSales } from "../../api/sales";
 import parseJwt from "../../utils/ParseJwt";
 import { selectToken } from "./usersSlice";
+
+export const getAllSalesAsync = createAsyncThunk("sales/getAll", async (id) => {
+  const response = await getAllSales(id);
+  return response.data;
+});
 
 export const createSaleAsync = createAsyncThunk(
   "sales/getEpaycoSale",
@@ -42,6 +47,13 @@ export const salesSlice = createSlice({
       .addCase(createSaleAsync.rejected, (state, { payload: message }) => {
         state.isCreating = false;
         state.saleError = message;
+      })
+      .addCase(getAllSalesAsync.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllSalesAsync.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.sales = payload;
       });
   },
 });

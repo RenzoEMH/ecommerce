@@ -16,10 +16,7 @@ const ShopCart = (props) => {
   useEffect(() => {
     setDescription(
       cartItems.reduce(
-        (acc, curr, index) =>
-          `${acc}${index !== 0 ? " || " : ""}${curr.name} - ${curr.type} X ${
-            curr.price
-          }`,
+        (acc, curr, index) => `${acc}${index !== 0 ? " || " : ""}${curr.name}`,
         ""
       )
     );
@@ -57,6 +54,11 @@ const ShopCart = (props) => {
       <hr />
       <hr />
       <hr />
+      <br />
+      <br />
+      <div className="title text-center">
+        <h2 className="position-relative d-inline-block">ShopCart</h2>
+      </div>
       <div className="row">
         <div className="col-md-10 col-11 mx-auto">
           <div className="row mt-5 gx-3">
@@ -89,7 +91,7 @@ const ShopCart = (props) => {
                           <div className="col-6 card-title">
                             <h1 className="mb-4 product_name">{item.name}</h1>
                             <p className="mb-2">{item.type}</p>
-                            <p className="mb-2">COLOR: BLUE</p>
+
                             <p className="mb-3">{item.size[0]}</p>
                           </div>
 

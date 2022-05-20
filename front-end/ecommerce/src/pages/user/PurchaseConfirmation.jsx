@@ -120,8 +120,8 @@ const PurchaseConfirmation = () => {
                 </Link>
               </div>
               <div>
-                <Link to={"/mis-entradas"} className="btn btn-danger">
-                  My Orders
+                <Link to={"/list"} className="btn btn-danger">
+                  Purchase History
                 </Link>
               </div>
             </div>

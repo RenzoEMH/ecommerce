@@ -4,6 +4,21 @@ const API_SERVER = "http://localhost:5000";
 
 const ENDPOINTS = {
   CREATE: "/api/sales/create",
+  GET_ONE: "/api/sales",
+};
+
+export const getAllSales = async (id) => {
+  const url = `${API_SERVER}${ENDPOINTS.GET_ONE}/${id}`;
+  return new Promise((resolve, reject) => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        resolve({ data });
+      })
+      .catch((err) => {
+        reject({ error: err });
+      });
+  });
 };
 
 export const createSale = async (data) => {

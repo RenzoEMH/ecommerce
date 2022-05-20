@@ -15,6 +15,8 @@ import EditProfile from "../pages/user/EditProfile";
 import DetailProduct from "../pages/user/DetailProducts";
 import { useState } from "react";
 import PurchaseConfirmation from "../pages/user/PurchaseConfirmation";
+import PurchaseHistory from "../pages/user/PurchaseHistory";
+import SaleDetails from "../pages/user/SaleDetails";
 
 function App() {
   const token = useSelector((state) => state.usuarios.token);
@@ -120,6 +122,28 @@ function App() {
           element={
             <RequireAuth>
               <PurchaseConfirmation />
+            </RequireAuth>
+          }
+        />
+      </Routes>
+      <Routes>
+        <Route
+          exact
+          path="/list"
+          element={
+            <RequireAuth>
+              <PurchaseHistory />
+            </RequireAuth>
+          }
+        />
+      </Routes>
+      <Routes>
+        <Route
+          exact
+          path="/sale_details"
+          element={
+            <RequireAuth>
+              <SaleDetails />
             </RequireAuth>
           }
         />

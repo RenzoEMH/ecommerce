@@ -17,6 +17,9 @@ const DetailProduct = (props) => {
     <div className="small-container single-product container">
       <br />
       <br />
+      <div className="title text-center">
+        <h2 className="position-relative d-inline-block">Product details</h2>
+      </div>
       <div className="row">
         <div className="col-2">
           <img

@@ -21,6 +21,10 @@ const Profile = () => {
       <hr />
       <hr />
       <hr />
+      <br />
+      <div className="title text-center">
+        <h2 className="position-relative d-inline-block">Profile</h2>
+      </div>
       <div className="wrapper">
         <div className="left">
           {user?.user.photo === "" ? (

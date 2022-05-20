@@ -20,15 +20,6 @@ const Home = () => {
         data-bs-ride="carousel"
       >
         <div className="container h-100 d-flex align-items-center carousel-inner">
-          {/* <div className="text-center carousel-item " data-bs-interval="1000">
-            <h2 className="text-capitalize text-white">Best collection</h2>
-            <h1 className="text-uppercase py-2 fw-bold text-white">
-              new arrivals
-            </h1>
-            <a href="/store" className="btn mt-3 text-uppercase shopButton">
-              shop now
-            </a>
-          </div> */}
           <div
             className="text-center carousel-item active phrase"
             data-bs-interval="1000"

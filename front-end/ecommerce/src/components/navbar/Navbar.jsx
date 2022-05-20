@@ -42,6 +42,11 @@ const NavbarMain = (props) => {
             </Link>
             {sesion ? (
               <>
+                <Link to="/list">
+                  <button type="button" className="btn position-relative">
+                    <i class="bi bi-list-check" style={{ fontSize: 18 }}></i>
+                  </button>
+                </Link>
                 <Link to="/profile">
                   <button type="button" className="btn position-relative">
                     <i className="bi bi-person-fill"></i>
