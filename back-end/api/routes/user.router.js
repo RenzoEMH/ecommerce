@@ -1,6 +1,5 @@
 import express from "express";
 import { userCtlr } from "../controllers/index.js";
-// import { validateToken } from "../middlewares/index.js";
 
 const { registerUser, getAllUsers, login, getOneUser, updateUser } = userCtlr;
 
