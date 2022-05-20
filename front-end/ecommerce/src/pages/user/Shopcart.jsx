@@ -44,7 +44,6 @@ const ShopCart = (props) => {
         response: "http://localhost:3000/confirmation",
         methodsDisable: ["PSE", "SP", "CASH", "DP"],
       };
-      console.log(handler);
 
       handler.open(data);
     }

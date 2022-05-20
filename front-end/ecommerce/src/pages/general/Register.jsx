@@ -76,7 +76,9 @@ const Register = () => {
             <Form.Control type="password" />
           </Form.Group>
           {error?.message == "Success" ? (
-            <div className="valid-feedback d-block">Creado exitosamente</div>
+            <div className="valid-feedback d-block">
+              User registered succesfully
+            </div>
           ) : (
             <div className="invalid-feedback d-block">{error?.message}</div>
           )}

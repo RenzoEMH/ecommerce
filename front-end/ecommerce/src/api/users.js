@@ -89,7 +89,6 @@ export const login = (user) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // resolve({ token: data.token });
         resolve({ data });
       })
       .catch((err) => {
