@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setToken } from "../../redux/slices/usersSlice";
 import { useNavigate } from "react-router-dom";
 import parseJwt from "../../utils/ParseJwt";
+import { HashLink } from "react-router-hash-link";
 
 import "./Navbar.scss";
 
@@ -23,16 +24,14 @@ const NavbarMain = (props) => {
         <div className="container">
           <Link to="/">
             <p className="navbar-brand d-flex justify-content-between align-items-center order-lg-0">
-              <img src="" alt="" />
-              <span className="text-uppercase fw-lighter ms-2">Store</span>
+              <img
+                src="https://res.cloudinary.com/vengui/image/upload/v1652120270/bg-logo-png-transparent_uzguei.png"
+                alt=""
+              />
+              <span className=" fw-lighter ms-2">BGstore</span>
             </p>
           </Link>
           <div className="order-lg-2">
-            <Link to="search">
-              <button type="button" className="btn position-relative">
-                <i className="bi bi-search"></i>
-              </button>
-            </Link>
             <Link to="/shopcart">
               <button type="button" className="btn position-relative">
                 <i className="bi bi-cart-fill"></i>
@@ -91,17 +90,16 @@ const NavbarMain = (props) => {
                 </li>
               </Link>
               <li className="nav-item px-2 py-2">
-                <a href="#new" className="nav-link text-uppercase text-dark">
-                  New Arrival
-                </a>
+                <HashLink smooth to="/#new">
+                  <a className="nav-link text-uppercase text-dark">
+                    New Arrival
+                  </a>
+                </HashLink>
               </li>
               <li className="nav-item px-2 py-2">
-                <a
-                  href="#aboutUs"
-                  className="nav-link text-uppercase text-dark"
-                >
-                  About us
-                </a>
+                <HashLink smooth to="/#aboutUs">
+                  <a className="nav-link text-uppercase text-dark">About us</a>
+                </HashLink>
               </li>
               <li className="nav-item px-2 py-2">
                 <a href="/store" className="nav-link text-uppercase text-dark">

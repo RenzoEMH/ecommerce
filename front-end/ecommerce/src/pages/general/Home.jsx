@@ -30,7 +30,7 @@ const Home = () => {
             </a>
           </div> */}
           <div
-            className="text-center carousel-item active"
+            className="text-center carousel-item active phrase"
             data-bs-interval="1000"
           >
             <h2 className="text-capitalize text-white">Best price & offer</h2>

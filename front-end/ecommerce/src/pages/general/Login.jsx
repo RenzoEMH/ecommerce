@@ -16,7 +16,7 @@ const Login = () => {
   const loggued = useSelector(selectUserLoggued);
   useEffect(() => {
     if (loggued?.message === "success") navigate("/");
-  }, [loggued]);
+  }, [loggued, navigate]);
   const handleSubmit = (e) => {
     e.preventDefault();
 

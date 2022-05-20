@@ -1,5 +1,5 @@
 import CarouselLogin from "../../components/login/Carousel";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,7 +8,6 @@ import "./Register.scss";
 import { errorCreateUser } from "../../redux/slices/usersSlice";
 
 const Register = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const error = useSelector(errorCreateUser);
   const handleSubmit = (e) => {
@@ -32,7 +31,9 @@ const Register = () => {
         <CarouselLogin />
       </div>
       <div className="col-lg-5 d-flex flex-column align-items-end">
-        <div className="px-lg-5 pt-lg-4 pb-lg-3 p-4 d-flex justify-content-center w-100 logo">
+        <br />
+        <br />
+        <div className="px-lg-5 pt-lg-4 pb-lg-3 p-4 d-flex justify-content-center w-100 logo mt-2">
           <img
             src="https://res.cloudinary.com/vengui/image/upload/v1652120270/bg-logo-png-transparent_uzguei.png"
             alt=""

@@ -1,13 +1,17 @@
 import "./Shopcart.scss";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ShopCart = (props) => {
+  const navigate = useNavigate();
   const { cartItems, onAdd, onRemove, deleteItem } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const taxPrice = itemsPrice * 0.14;
   const shippingPrice = 2;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
   const [description, setDescription] = useState("");
+  const token = useSelector((state) => state.usuarios.token);
 
   useEffect(() => {
     setDescription(
@@ -27,22 +31,26 @@ const ShopCart = (props) => {
   });
 
   const openPayment = () => {
-    let data = {
-      name: "Ecommerce",
-      description: description,
-      currency: "usd",
-      amount: totalPrice,
-      tax_base: "0",
-      tax: "0",
-      country: "pe",
-      lang: "es",
-      external: "false",
-      response: "http://localhost:3000/confirmation",
-      methodsDisable: ["PSE", "SP", "CASH", "DP"],
-    };
-    console.log(handler);
+    if (!token) {
+      navigate("/login");
+    } else {
+      let data = {
+        name: "BGstore",
+        description: description,
+        currency: "usd",
+        amount: totalPrice,
+        tax_base: "0",
+        tax: "0",
+        country: "pe",
+        lang: "es",
+        external: "false",
+        response: "http://localhost:3000/confirmation",
+        methodsDisable: ["PSE", "SP", "CASH", "DP"],
+      };
+      console.log(handler);
 
-    handler.open(data);
+      handler.open(data);
+    }
   };
   return (
     <div className="container-fluid">
@@ -52,10 +60,18 @@ const ShopCart = (props) => {
       <div className="row">
         <div className="col-md-10 col-11 mx-auto">
           <div className="row mt-5 gx-3">
-            <div className="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow">
-              <h2 className="py-4 font-weight-bold">
-                Cart: {cartItems.length} items
-              </h2>
+            <div
+              className="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow"
+              style={{ borderRadius: 15 }}
+            >
+              {cartItems.length > 0 ? (
+                <h2 className="py-4 font-weight-bold">
+                  Cart: {cartItems.length} items
+                </h2>
+              ) : (
+                <h1 className="py-4 font-weight-bold">Cart empty</h1>
+              )}
+
               {cartItems.map((item) => (
                 <>
                   <div className="card p-4">

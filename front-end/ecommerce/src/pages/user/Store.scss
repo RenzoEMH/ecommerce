@@ -31,7 +31,6 @@ body {
   position: relative;
 }
 .product-img:hover::after {
-  content: "";
   position: absolute;
   top: 0;
   left: 0;

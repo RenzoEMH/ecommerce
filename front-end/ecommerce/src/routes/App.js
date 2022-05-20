@@ -2,6 +2,7 @@ import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import parseJwt from "../utils/ParseJwt";
+import RequireAuth from "../utils/RequireAuth";
 import Home from "../pages/general/Home";
 import Login from "../pages/general/Login";
 import Register from "../pages/general/Register";
@@ -64,10 +65,26 @@ function App() {
         <Route exact path="/login" element={<Login />} />
       </Routes>
       <Routes>
-        <Route exact path="/profile" element={<Profile />} />
+        <Route
+          exact
+          path="/profile"
+          element={
+            <RequireAuth>
+              <Profile />
+            </RequireAuth>
+          }
+        />
       </Routes>
       <Routes>
-        <Route exact path="/profile_edit" element={<EditProfile />} />
+        <Route
+          exact
+          path="/profile_edit"
+          element={
+            <RequireAuth>
+              <EditProfile />
+            </RequireAuth>
+          }
+        />
       </Routes>
       <Routes>
         <Route
@@ -97,7 +114,15 @@ function App() {
         <Route exact path="/store" element={<Store onAdd={onAdd} />} />
       </Routes>
       <Routes>
-        <Route exact path="/confirmation" element={<PurchaseConfirmation />} />
+        <Route
+          exact
+          path="/confirmation"
+          element={
+            <RequireAuth>
+              <PurchaseConfirmation />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </div>
   );
