@@ -12,6 +12,8 @@ const saleSchema = new Schema(
     cardType: String,
     idUser: mongoose.SchemaTypes.ObjectId,
     totalFare: Number,
+    description: String,
+    productsSales: Array,
   },
   {
     timestamps: true,
