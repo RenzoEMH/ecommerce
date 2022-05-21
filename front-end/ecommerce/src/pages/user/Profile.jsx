@@ -13,7 +13,7 @@ const Profile = () => {
   const user = useSelector((state) => state.usuarios.user);
   useEffect(() => {
     dispatch(getOneUsersAsync(sesion.id));
-  }, [dispatch, sesion.id]);
+  }, [dispatch, sesion.id, user]);
   return (
     <div>
       <hr />
