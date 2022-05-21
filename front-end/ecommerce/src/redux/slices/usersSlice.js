@@ -47,9 +47,6 @@ export const usersSlice = createSlice({
     setToken: (state, { payload: token }) => {
       state.token = token;
     },
-    // setUsersFiltered: (state, { payload: users }) => {
-    //   state.filteredUsers = [...users];
-    // },
   },
   extraReducers: (builder) => {
     builder
@@ -80,9 +77,6 @@ export const usersSlice = createSlice({
       .addCase(updateUserAsync.fulfilled, (state, { payload }) => {
         state.updatedUser = payload.data;
       });
-    //   .addCase(verifyEmailAsync.fulfilled, (state, { payload }) => {
-    //     state.verifiedUser = payload;
-    //   });
   },
 });
 

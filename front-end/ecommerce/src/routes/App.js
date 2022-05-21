@@ -1,4 +1,3 @@
-import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import parseJwt from "../utils/ParseJwt";
@@ -59,14 +58,8 @@ function App() {
           path="/"
           element={sesion?.type === "admin" ? <Profile /> : <Home />}
         />
-      </Routes>
-      <Routes>
         <Route exact path="/register" element={<Register />} />
-      </Routes>
-      <Routes>
         <Route exact path="/login" element={<Login />} />
-      </Routes>
-      <Routes>
         <Route
           exact
           path="/profile"
@@ -76,8 +69,6 @@ function App() {
             </RequireAuth>
           }
         />
-      </Routes>
-      <Routes>
         <Route
           exact
           path="/profile_edit"
@@ -87,15 +78,11 @@ function App() {
             </RequireAuth>
           }
         />
-      </Routes>
-      <Routes>
         <Route
           exact
           path="/details/:productId"
           element={<DetailProduct onAdd={onAdd} />}
         />
-      </Routes>
-      <Routes>
         <Route
           exact
           path="/shopcart"
@@ -108,14 +95,8 @@ function App() {
             />
           }
         />
-      </Routes>
-      <Routes>
         <Route exact path="/search" element={<SearchProduct onAdd={onAdd} />} />
-      </Routes>
-      <Routes>
         <Route exact path="/store" element={<Store onAdd={onAdd} />} />
-      </Routes>
-      <Routes>
         <Route
           exact
           path="/confirmation"
@@ -125,8 +106,6 @@ function App() {
             </RequireAuth>
           }
         />
-      </Routes>
-      <Routes>
         <Route
           exact
           path="/list"
@@ -136,8 +115,6 @@ function App() {
             </RequireAuth>
           }
         />
-      </Routes>
-      <Routes>
         <Route
           exact
           path="/sale_details"

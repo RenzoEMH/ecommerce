@@ -6,10 +6,31 @@ import Button from "react-bootstrap/Button";
 import { createUserAsync } from "../../redux/slices/usersSlice";
 import "./Register.scss";
 import { errorCreateUser } from "../../redux/slices/usersSlice";
+import { useState } from "react";
+
+const errors = {
+  confirmEmail: "Wrong confirm email",
+  confirmPassword: "Wrong confirm password",
+};
 
 const Register = () => {
   const dispatch = useDispatch();
   const error = useSelector(errorCreateUser);
+  const [formErrors, setFormErrors] = useState({});
+
+  const registerUserIsValid = (e, newUser) => {
+    const validation = { isValid: true, formErrors: {} };
+    if (e.target[3].value !== newUser.email) {
+      validation.isValid = false;
+      validation.formErrors.confirmEmail = errors.confirmEmail;
+    }
+    if (e.target[5].value !== newUser.password) {
+      validation.isValid = false;
+      validation.formErrors.confirmPassword = errors.confirmPassword;
+    }
+    return validation;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const { elements } = e.target;
@@ -23,7 +44,13 @@ const Register = () => {
       phone: "",
       type: "usuario",
     };
-    dispatch(createUserAsync(newUser));
+    const { isValid, formErrors } = registerUserIsValid(e, newUser);
+    if (isValid) {
+      setFormErrors({});
+      dispatch(createUserAsync(newUser));
+    } else {
+      setFormErrors(formErrors);
+    }
   };
   return (
     <div className="row w-100 main-body">
@@ -76,9 +103,21 @@ const Register = () => {
             <Form.Control type="password" />
           </Form.Group>
           {error?.message == "Success" ? (
-            <div className="valid-feedback d-block">Creado exitosamente</div>
+            <div className="valid-feedback d-block">
+              User registered succesfully
+            </div>
           ) : (
             <div className="invalid-feedback d-block">{error?.message}</div>
+          )}
+          {!!formErrors && (
+            <div className="invalid-feedback d-block">
+              {formErrors.confirmEmail}
+            </div>
+          )}
+          {!!formErrors && (
+            <div className="invalid-feedback d-block">
+              {formErrors.confirmPassword}
+            </div>
           )}
           <div className="d-flex justify-content-center">
             <Button variant="secondary" type="submit" className="w-50">

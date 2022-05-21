@@ -5,7 +5,6 @@ export const getSalesByUser = async (request, response) => {
   try {
     const { id } = request.params;
     const sales = await Sale.find({ idUser: id });
-    console.log(sales);
     if (sales.length === 0)
       response.status(400).json({ message: "sales not fund" });
     else response.status(200).json({ message: "success", sales });

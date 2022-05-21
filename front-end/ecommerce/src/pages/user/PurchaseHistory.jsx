@@ -9,6 +9,13 @@ const PurchaseHistory = () => {
   const dispatch = useDispatch();
   const sales = useSelector((state) => state.sales.sales);
   const token = useSelector((state) => state.usuarios.token);
+  const salesList = [];
+  sales?.sales?.map((sale, i, sales) => {
+    salesList[0] = sales[0];
+    if (sales[i - 1]) {
+      if (sale?.token !== sales[i - 1]?.token) salesList.push(sale);
+    }
+  });
   const sesion = parseJwt(token);
   useEffect(() => {
     dispatch(getAllSalesAsync(sesion.id));
@@ -40,8 +47,8 @@ const PurchaseHistory = () => {
                 </tr>
               </thead>
               <tbody data-test-id="event-user">
-                {sales?.sales?.map((sale) => (
-                  <tr>
+                {salesList.map((sale) => (
+                  <tr key={sale._id}>
                     <th scope="row">{sale.numberTransaction}</th>
                     <td>{sale.client}</td>
                     <td>{sale.paymentDate}</td>

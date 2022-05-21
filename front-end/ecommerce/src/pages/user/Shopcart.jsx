@@ -41,10 +41,9 @@ const ShopCart = (props) => {
         country: "pe",
         lang: "es",
         external: "false",
-        response: "http://localhost:3000/confirmation",
+        response: `${process.env.REACT_APP_BASE_URL}confirmation`,
         methodsDisable: ["PSE", "SP", "CASH", "DP"],
       };
-      console.log(handler);
 
       handler.open(data);
     }
@@ -142,7 +141,7 @@ const ShopCart = (props) => {
 
             <div className="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
               <div className="right_side p-3 shadow bg-white">
-                <h2 className="product_name mb-5">The Total Amount Of</h2>
+                <h2 className="product_name mb-5">Total Amount</h2>
                 <div className="price_indiv d-flex justify-content-between">
                   <p>Products price</p>
                   <p>
