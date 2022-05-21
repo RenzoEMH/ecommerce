@@ -102,7 +102,7 @@ const Register = () => {
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control type="password" />
           </Form.Group>
-          {error?.message == "Success" ? (
+          {error?.message === "Success" ? (
             <div className="valid-feedback d-block">
               User registered succesfully
             </div>

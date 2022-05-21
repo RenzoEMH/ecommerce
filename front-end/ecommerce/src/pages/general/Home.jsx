@@ -28,12 +28,12 @@ const Home = () => {
             <h1 className="text-uppercase py-2 fw-bold text-white">
               new season
             </h1>
-            <a
+            <button
               className="btn mt-3 text-uppercase shopButton"
               onClick={() => navigate("/store")}
             >
               buy now
-            </a>
+            </button>
           </div>
         </div>
       </header>
@@ -81,9 +81,12 @@ const Home = () => {
             <div className="offers-content">
               <span className="text-white">Discount Up To 40%</span>
               <h2 className="mt-2 mb-4 text-white">Grand Sale Offer!</h2>
-              <a className="btn shopButton" onClick={() => navigate("/store")}>
+              <button
+                className="btn shopButton"
+                onClick={() => navigate("/store")}
+              >
                 Buy Now
-              </a>
+              </button>
             </div>
           </div>
         </div>

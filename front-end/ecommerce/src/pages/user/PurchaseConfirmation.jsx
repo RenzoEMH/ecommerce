@@ -19,7 +19,7 @@ const PurchaseConfirmation = () => {
 
   useEffect(() => {
     dispatch(createSaleAsync(refPayco));
-  }, [dispatch]);
+  }, [dispatch, refPayco]);
 
   return (
     <>
