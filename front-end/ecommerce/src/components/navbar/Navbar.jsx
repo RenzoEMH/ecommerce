@@ -44,7 +44,10 @@ const NavbarMain = (props) => {
               <>
                 <Link to="/list">
                   <button type="button" className="btn position-relative">
-                    <i class="bi bi-list-check" style={{ fontSize: 18 }}></i>
+                    <i
+                      className="bi bi-list-check"
+                      style={{ fontSize: 18 }}
+                    ></i>
                   </button>
                 </Link>
                 <Link to="/profile">
@@ -89,9 +92,7 @@ const NavbarMain = (props) => {
             <ul className="navbar-nav mx-auto text-center">
               <Link to="/">
                 <li className="nav-item px-2 py-2">
-                  <a href="/" className="nav-link text-uppercase text-dark">
-                    Home
-                  </a>
+                  <a className="nav-link text-uppercase text-dark">Home</a>
                 </li>
               </Link>
               <li className="nav-item px-2 py-2">
@@ -107,7 +108,11 @@ const NavbarMain = (props) => {
                 </HashLink>
               </li>
               <li className="nav-item px-2 py-2">
-                <a href="/store" className="nav-link text-uppercase text-dark">
+                <a
+                  type="button"
+                  className="nav-link text-uppercase text-dark"
+                  onClick={() => navigate("/store")}
+                >
                   Products
                 </a>
               </li>

@@ -91,7 +91,7 @@ const Store = (props) => {
 
       <div className="row justify-content-center g-4" id="product-list">
         {products?.products.map((product) => (
-          <div className="col-lg-4 col-md-6 electronic">
+          <div className="col-lg-4 col-md-6 electronic" key={product._id}>
             <div className="product-item">
               <div className="product-img">
                 <img

@@ -28,7 +28,10 @@ const Home = () => {
             <h1 className="text-uppercase py-2 fw-bold text-white">
               new season
             </h1>
-            <a href="/store" className="btn mt-3 text-uppercase shopButton">
+            <a
+              className="btn mt-3 text-uppercase shopButton"
+              onClick={() => navigate("/store")}
+            >
               buy now
             </a>
           </div>
@@ -51,6 +54,7 @@ const Home = () => {
                     className="col-md-6 col-lg-4 col-xl-3 p-2 best"
                     type="button"
                     onClick={() => navigate(`/details/${product._id}`)}
+                    key={product._id}
                   >
                     <div className="collection-img position-relative">
                       <img src={product.photo[0]} className="w-100" alt="" />
@@ -77,11 +81,7 @@ const Home = () => {
             <div className="offers-content">
               <span className="text-white">Discount Up To 40%</span>
               <h2 className="mt-2 mb-4 text-white">Grand Sale Offer!</h2>
-              <a
-                href="/store"
-                className="btn shopButton"
-                onClick={() => navigate("/store")}
-              >
+              <a className="btn shopButton" onClick={() => navigate("/store")}>
                 Buy Now
               </a>
             </div>

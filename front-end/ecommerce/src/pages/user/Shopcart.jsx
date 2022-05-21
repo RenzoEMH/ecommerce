@@ -41,7 +41,7 @@ const ShopCart = (props) => {
         country: "pe",
         lang: "es",
         external: "false",
-        response: "http://localhost:3000/confirmation",
+        response: `${process.env.REACT_APP_BASE_URL}confirmation`,
         methodsDisable: ["PSE", "SP", "CASH", "DP"],
       };
 

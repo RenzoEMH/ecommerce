@@ -1,11 +1,10 @@
-const API_SERVER = "http://localhost:5000";
+const API_SERVER = process.env.REACT_APP_API_URL;
 
 const ENDPOINTS = {
   GET_ALL: "/api/user",
   GET_ONE: "/api/user",
   CREATE: "/api/user/register",
   LOGIN: "/api/auth/local/login",
-  GET_ONE: "/api/user",
   UPDATE: "/api/user",
 };
 
