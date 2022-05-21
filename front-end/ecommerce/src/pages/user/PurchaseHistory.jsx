@@ -10,7 +10,7 @@ const PurchaseHistory = () => {
   const sales = useSelector((state) => state.sales.sales);
   const token = useSelector((state) => state.usuarios.token);
   const salesList = [];
-  sales?.sales?.map((sale, i, sales) => {
+  sales?.sales?.filter((sale, i, sales) => {
     salesList[0] = sales[0];
     if (sales[i - 1]) {
       if (sale?.token !== sales[i - 1]?.token) salesList.push(sale);
@@ -19,7 +19,7 @@ const PurchaseHistory = () => {
   const sesion = parseJwt(token);
   useEffect(() => {
     dispatch(getAllSalesAsync(sesion.id));
-  }, [dispatch]);
+  }, [dispatch, sesion.id]);
 
   return (
     <>
@@ -47,12 +47,12 @@ const PurchaseHistory = () => {
                 </tr>
               </thead>
               <tbody data-test-id="event-user">
-                {salesList.map((sale) => (
-                  <tr key={sale._id}>
-                    <th scope="row">{sale.numberTransaction}</th>
-                    <td>{sale.client}</td>
-                    <td>{sale.paymentDate}</td>
-                    <td>$. {sale.totalFare}</td>
+                {salesList?.map((sale) => (
+                  <tr key={sale?._id}>
+                    <th scope="row">{sale?.numberTransaction}</th>
+                    <td>{sale?.client}</td>
+                    <td>{sale?.paymentDate}</td>
+                    <td>$. {sale?.totalFare}</td>
                     <td>
                       <button
                         type="button"

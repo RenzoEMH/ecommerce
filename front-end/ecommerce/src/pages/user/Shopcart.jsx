@@ -41,7 +41,7 @@ const ShopCart = (props) => {
         country: "pe",
         lang: "es",
         external: "false",
-        response: `${process.env.REACT_APP_BASE_URL}confirmation`,
+        response: "https://ecommerce-bgstore.netlify.app/confirmation",
         methodsDisable: ["PSE", "SP", "CASH", "DP"],
       };
 

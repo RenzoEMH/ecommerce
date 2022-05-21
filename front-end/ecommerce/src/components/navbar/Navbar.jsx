@@ -92,29 +92,33 @@ const NavbarMain = (props) => {
             <ul className="navbar-nav mx-auto text-center">
               <Link to="/">
                 <li className="nav-item px-2 py-2">
-                  <a className="nav-link text-uppercase text-dark">Home</a>
+                  <button className="nav-link text-uppercase text-dark">
+                    Home
+                  </button>
                 </li>
               </Link>
               <li className="nav-item px-2 py-2">
                 <HashLink smooth to="/#new">
-                  <a className="nav-link text-uppercase text-dark">
+                  <button className="nav-link text-uppercase text-dark">
                     New Arrival
-                  </a>
+                  </button>
                 </HashLink>
               </li>
               <li className="nav-item px-2 py-2">
                 <HashLink smooth to="/#aboutUs">
-                  <a className="nav-link text-uppercase text-dark">About us</a>
+                  <button className="nav-link text-uppercase text-dark">
+                    About us
+                  </button>
                 </HashLink>
               </li>
               <li className="nav-item px-2 py-2">
-                <a
+                <button
                   type="button"
                   className="nav-link text-uppercase text-dark"
                   onClick={() => navigate("/store")}
                 >
                   Products
-                </a>
+                </button>
               </li>
             </ul>
           </div>
