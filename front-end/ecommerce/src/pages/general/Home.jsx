@@ -101,14 +101,15 @@ const Home = () => {
                 </h2>
               </div>
               <p className="lead text-muted">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-                ipsam.
+                Shop for women's and men's fashion, beauty and home essentials
+                online!
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatem fuga blanditiis, modi exercitationem quae quam
-                eveniet! Minus labore voluptatibus corporis recusandae
-                accusantium velit, nemo, nobis, nulla ullam pariatur totam quos.
+                Our Conscious choice products are created with a little extra
+                consideration for the planet: at least 50% of each piece is made
+                from more sustainable materials, like organic cotton or recycled
+                polyester. The only exception is recycled cotton, which for
+                quality reasons, can only make up 20% of a product.
               </p>
             </div>
             <div className="col-lg-6 order-lg-0">
