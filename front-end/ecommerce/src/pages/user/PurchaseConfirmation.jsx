@@ -35,7 +35,7 @@ const PurchaseConfirmation = () => {
       >
         <main className="confirmacion-compra__main d-flex flex-column flex-grow-1">
           <section className="principal d-flex flex-column justify-content-center flex-grow-1">
-            <h2 className="text-center text-black">DETALLE COMPRA</h2>
+            <h2 className="text-center text-black">Purchase detail</h2>
             <section className="linea">
               <div>
                 <hr />
@@ -44,7 +44,7 @@ const PurchaseConfirmation = () => {
 
             {isCreating ? (
               <h2 className="d-flex flex-column flex-grow-1 align-items-center justify-content-center">
-                Cargando...
+                Loading...
               </h2>
             ) : null}
 
@@ -52,7 +52,7 @@ const PurchaseConfirmation = () => {
               <div className="detalle">
                 <div className="subgrupo">
                   <div className="texto">
-                    <h4>Nº Transacción / Referencia:</h4>
+                    <h4>Nº Transaction:</h4>
                   </div>
                   <div className="valor-texto" id="codigo-autorizacion">
                     <h4>{createdSale.numberTransaction}</h4>
@@ -61,7 +61,7 @@ const PurchaseConfirmation = () => {
 
                 <div className="subgrupo">
                   <div className="texto">
-                    <h4>Nro. Tarjeta:</h4>
+                    <h4>Card number:</h4>
                   </div>
                   <div className="valor-texto" id="nro-tarjeta">
                     <h4>{createdSale.cardNumber}</h4>
@@ -70,7 +70,7 @@ const PurchaseConfirmation = () => {
 
                 <div className="subgrupo">
                   <div className="texto">
-                    <h4>Cliente:</h4>
+                    <h4>Client:</h4>
                   </div>
                   <div className="valor-texto" id="cant-importe">
                     <h4>{createdSale.client}</h4>
@@ -79,7 +79,7 @@ const PurchaseConfirmation = () => {
 
                 <div className="subgrupo">
                   <div className="texto">
-                    <h4>Fecha de Operación:</h4>
+                    <h4>Date:</h4>
                   </div>
                   <div className="valor-texto" id="fecha-reserva">
                     <h4>{createdSale.paymentDate}</h4>
@@ -88,7 +88,7 @@ const PurchaseConfirmation = () => {
 
                 <div className="subgrupo">
                   <div className="texto">
-                    <h4>Tipo de tarjeta:</h4>
+                    <h4>Type of card:</h4>
                   </div>
                   <div className="valor-texto" id="nombre-comercio">
                     <h4>
@@ -99,7 +99,7 @@ const PurchaseConfirmation = () => {
 
                 <div className="subgrupo">
                   <div className="texto">
-                    <h4>Importe Total:</h4>
+                    <h4>Total amount:</h4>
                   </div>
                   <div className="valor-texto" id="terminos-condiciones">
                     <h4>$ {createdSale.totalFare}</h4>
